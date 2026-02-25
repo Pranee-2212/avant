@@ -109,10 +109,15 @@ def get_sync_release_info(sync_release_model: SyncReleaseModel):
 
 
 def get_project_info(project: Union[AnityaProjectModel, GitProjectModel]):
+    """Changed result_dict={} --> result_dict=dict()
+    
+ This is to avoid none values in the result dictionary"""
     result_dict = dict()
-
+    """change multiple line none value declaration to single line none value declaration for better readability"""
     anitya_project_id = anitya_project_name = anitya_package = project_url = repo_name = repo_namespace = None
 
+    """return "" (empty string) if project is none """
+    
     if isinstance(project, AnityaProjectModel):
         anitya_project_id = project.project_id if project else ""
         anitya_project_name = project.project_name if project else ""
