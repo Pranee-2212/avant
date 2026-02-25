@@ -109,10 +109,9 @@ def get_sync_release_info(sync_release_model: SyncReleaseModel):
 
 
 def get_project_info(project: Union[AnityaProjectModel, GitProjectModel]):
-    result_dict = {}
+    result_dict = dict()
 
-    anitya_project_id = anitya_project_name = anitya_package = None
-    project_url = repo_name = repo_namespace = None
+    anitya_project_id = anitya_project_name = anitya_package = project_url = repo_name = repo_namespace = None
 
     if isinstance(project, AnityaProjectModel):
         anitya_project_id = project.project_id if project else ""
