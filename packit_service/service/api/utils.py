@@ -110,14 +110,13 @@ def get_sync_release_info(sync_release_model: SyncReleaseModel):
 
 def get_project_info(project: Union[AnityaProjectModel, GitProjectModel]):
     """Changed result_dict={} --> result_dict=dict()
-    
- This is to avoid none values in the result dictionary"""
+       This is to avoid none values in the result dictionary"""
     result_dict = dict()
-    """change multiple line none value declaration to single line none value declaration for better readability"""
+   
     anitya_project_id = anitya_project_name = anitya_package = project_url = repo_name = repo_namespace = None
 
     """return "" (empty string) if project is none """
-    
+
     if isinstance(project, AnityaProjectModel):
         anitya_project_id = project.project_id if project else ""
         anitya_project_name = project.project_name if project else ""
@@ -128,12 +127,14 @@ def get_project_info(project: Union[AnityaProjectModel, GitProjectModel]):
         repo_name = project.repo_name if project else ""
         project_url = project.project_url if project else ""
 
-    result_dict["repo_namespace"] = repo_namespace
-    result_dict["repo_name"] = repo_name
-    result_dict["project_url"] = project_url
-    result_dict["anitya_project_id"] = anitya_project_id
-    result_dict["anitya_project_name"] = anitya_project_name
-    result_dict["anitya_package"] = anitya_package
-    result_dict["non_git_upstream"] = isinstance(project, AnityaProjectModel)
+    result_dict={
+    "repo_namespace": repo_namespace,
+    "repo_name": repo_name,
+    "project_url": project_url,
+    "anitya_project_id": anitya_project_id,
+    "anitya_project_name": anitya_project_name,
+    "anitya_package": anitya_package,
+    "non_git_upstream": isinstance(project, AnityaProjectModel)
+}
 
     return result_dict
