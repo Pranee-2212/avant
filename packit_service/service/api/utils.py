@@ -26,6 +26,7 @@ from packit_service.models import (
 
 def response_maker(result: Any, status: HTTPStatus = HTTPStatus.OK):
     """response_maker is a wrapper around flask's make_response"""
+    """This function uses Jsonify and directly sets the status code than being a wrapper to it """
     resp = jsonify(result)
     resp.status_code = status.value
     return resp
